@@ -8,7 +8,7 @@ type HeadingProps = {
 const Heading = ({ title, description }: HeadingProps) => {
   return (
     <>
-      <div className="px-8">
+      <div className="">
         <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
         {description && (
           <p className="text-sm text-muted-foreground">{description}</p>

@@ -1,13 +1,14 @@
+import { Ticket } from "@prisma/client";
 import clsx from "clsx";
-import { LucideSquareArrowOutUpRight } from "lucide-react";
+import { LucideSquareArrowOutUpRight, LucideTrash } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ticketPath } from "@/paths";
 
+import { deleteTicket } from "../actions/delete-ticket";
 import { TICKET_ICONS } from "../constants";
-import { Ticket } from "../types";
 
 type TicketItemProps = {
   ticket: Ticket;
@@ -15,14 +16,20 @@ type TicketItemProps = {
 };
 
 const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
-  // console.log("where am i being rendered? (TicketItem)");
-
   const detailButton = (
     <Button variant="outline" size="icon" asChild>
-      <Link href={ticketPath(ticket.id)}>
-        <LucideSquareArrowOutUpRight />
+      <Link prefetch href={ticketPath(ticket.id)}>
+        <LucideSquareArrowOutUpRight className="h-4 w-4" />
       </Link>
     </Button>
+  );
+
+  const deleteButton = (
+    <form action={deleteTicket.bind(null, ticket.id)}>
+      <Button variant="outline" size="icon">
+        <LucideTrash className="h-4 w-4" />
+      </Button>
+    </form>
   );
 
   return (
@@ -32,7 +39,7 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
         "max-w-[420px]": !isDetail,
       })}
     >
-      <Card className="w-full">
+      <Card className="w-full pt-20">
         <CardHeader>
           <CardTitle className="flex gap-x-2">
             <span>{TICKET_ICONS[ticket.status]}</span>
@@ -51,9 +58,9 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
           </span>
         </CardContent>
       </Card>
-      {isDetail ? null : (
-        <div className="flex flex-col gap-y-1 ml-2">{detailButton}</div>
-      )}
+      <div className="flex flex-col gap-y-1" style={{ marginLeft: "10px" }}>
+        {isDetail ? deleteButton : detailButton}
+      </div>
     </div>
   );
 };
