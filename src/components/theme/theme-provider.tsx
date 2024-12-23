@@ -5,6 +5,8 @@ type ThemeProviderProps = {
 };
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  console.log("where am i being rendered? (ThemeProvider)");
+
   return (
     <BaseThemeProvider attribute="class" defaultTheme="system" enableSystem>
       {children}
