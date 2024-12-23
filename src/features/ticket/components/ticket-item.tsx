@@ -50,7 +50,7 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
         </CardContent>
       </Card>
       {isDetail ? null : (
-        <div className="flex flex-col gap-y-1">{detailButton}</div>
+        <div className="flex flex-col gap-y-1 ml-2">{detailButton}</div>
       )}
     </div>
   );
