@@ -19,7 +19,7 @@ const TicketPage = async ({ params }: TicketPageProps) => {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="max-w-[580px] w-full animate-fade-in-from-top">
+      <div className="max-w-[420px] w-full animate-fade-in-from-top">
         <TicketItem ticket={ticket} isDetail={true} />
       </div>
     </div>
