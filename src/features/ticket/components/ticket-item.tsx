@@ -35,7 +35,11 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
 
   const editButton = (
     <Button variant="outline" size="icon" asChild>
-      <Link prefetch href={ticketEditPath(ticket.id)}>
+      <Link
+        prefetch
+        href={ticketEditPath(ticket.id)}
+        aria-label={`Edit ticket ${ticket.id}`}
+      >
         <LucidePencil className="h-4 w-4" />
       </Link>
     </Button>
@@ -43,7 +47,11 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
 
   const deleteButton = (
     <form action={deleteTicket.bind(null, ticket.id)}>
-      <Button variant="outline" size="icon">
+      <Button
+        variant="outline"
+        size="icon"
+        aria-label={`Delete ticket ${ticket.id}`}
+      >
         <LucideTrash className="h-4 w-4" />
       </Button>
     </form>
