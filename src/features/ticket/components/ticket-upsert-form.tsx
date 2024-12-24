@@ -20,7 +20,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertForm) => {
       <Label htmlFor="title">Title</Label>
       <Input type="text" name="title" id="title" defaultValue={ticket?.title} />
 
-      <Label htmlFor="title">Content</Label>
+      <Label htmlFor="content">Content</Label>
       <Textarea name="content" id="content" defaultValue={ticket?.content} />
 
       <Button type="submit">{ticket ? "Edit" : "Create"}</Button>
